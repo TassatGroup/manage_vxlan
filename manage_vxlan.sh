@@ -103,9 +103,15 @@ do
   #peeroct=$(echo ${peer}|awk -F. '{print $NF}')
   #inpeer=${myinnet}.${peeroct}
   # skip adding a peer that already exists on this ${myvxin} interface
-  bridge fdb show dev ${myvxin} | grep -q -w ${peer} && continue
+  bridge fdb show dev ${myvxin} | grep -q -w ${peer} |grep '00:00:00:00:00:00' && continue
   echo "INFO - adding new peer: ${peer}"
   bridge fdb append 00:00:00:00:00:00 dev ${myvxin} dst ${peer}
   # quick ping check -- this won't work if other peers havent discovered this peer
   #ping -c 3 ${inpeer}
+done
+
+# this is great to log which peers are available
+for ip in `fping -i 10 -A -a -q -g ${incidr}`;
+do
+  echo "[INFO] - $0 able to ping peer ${ip}"
 done

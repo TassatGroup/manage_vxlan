@@ -59,7 +59,7 @@ The following will:
 INFO - ip link add vxlan0 type vxlan id 1 dstport 0 local 10.1.1.1 ttl 16 dev eth0
 INFO - ip addr add 192.168.1.1/24 dev vxlan0
 INFO - ip link set vxlan0 up
-INFO - ip route add 224.0.1.0/4 dev vxlan0
+INFO - ip route add 224.0.0.0/4 dev vxlan0
 INFO - adding new peer: 10.1.1.2
 INFO - adding new peer: 10.1.1.3
 INFO - adding new peer: 10.1.1.4
@@ -73,7 +73,7 @@ The following does the same as above but uses discovery (this one is great for c
 INFO - ip link add vxlan0 type vxlan id 1 dstport 0 local 10.1.1.1 ttl 16 dev eth0
 INFO - ip addr add 192.168.1.1/24 dev vxlan0
 INFO - ip link set vxlan0 up
-INFO - ip route add 224.0.1.0/4 dev vxlan0
+INFO - ip route add 224.0.0.0/4 dev vxlan0
 INFO - adding new peer: 10.1.1.2
 INFO - adding new peer: 10.1.1.3
 INFO - adding new peer: 10.1.1.4
